@@ -1,0 +1,76 @@
+
+@use "./base/normalize";
+
+body {
+  font-family: Inter, sans-serif;
+  background: #f6f3ee;
+  color: #161616;
+}
+
+.button {
+  padding: 16px 24px;
+  border: 1px solid #161616;
+
+  &--primary {
+    background: #161616;
+    color: white;
+  }
+
+  &--secondary {
+    background: transparent;
+    color: #161616;
+  }
+}
+
+.header {
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 28px;
+  }
+}
+
+.hero {
+  min-height: calc(100vh - 90px);
+  padding: 80px 48px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+
+  &__title {
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+  }
+
+  &__description {
+    max-width: 560px;
+    margin-top: 24px;
+    font-size: 20px;
+
+    line-height: 1.6;
+  }
+
+  &__actions {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__card {
+    padding: 36px;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 12px 12px 0 #161616;
+  }
+}
