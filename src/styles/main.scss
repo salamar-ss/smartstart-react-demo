@@ -74,3 +74,68 @@ body {
     box-shadow: 12px 12px 0 #161616;
   }
 }
+
+.generator {
+  min-height: 100vh;
+  padding: 80px 48px;
+  background: #f6f3ee;
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 80px;
+  }
+
+  &__heading {
+    margin-bottom: 32px;
+    font-size: 32px;
+  }  
+
+  &__preview {
+    padding: 48px;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 16px 16px 0 #161616;
+  }
+
+  &__title {
+    margin-top: 24px;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+  }
+
+  &__description {
+    margin-top: 24px;
+    max-width: 640px;
+    font-size: 22px;
+    line-height: 1.6;
+  }
+
+  &__offer {
+    margin-top: 40px;
+    display: inline-flex;
+    padding: 18px 28px;
+    background: #161616;
+    color: white;
+    font-weight: 700;
+  }
+}
+
+.input-field {
+  margin-bottom: 24px;
+
+  &__label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #161616;
+    background: white;
+    font-size: 16px;
+  }
+}
