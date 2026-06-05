@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Input from "../../components/Input/Input";
+import { formFields } from "../../data/formFields";
 
 type GeneratorFormData = {
   businessName: string;
@@ -36,34 +37,22 @@ function Generator() {
           <h2 className="generator__heading">
             SmartStart Generator
           </h2>
-
-          <Input
-            label="Business Name"
-            name="businessName"
-            value={formData.businessName}
-            onChange={handleInputChange}
-          />
-
-          <Input
-            label="Audience"
-            name="audience"
-            value={formData.audience}
-            onChange={handleInputChange}
-          />
-
-          <Input
-            label="Offer"
-            name="offer"
-            value={formData.offer}
-            onChange={handleInputChange}
-          />
-
-          <Input
-            label="Transformation"
-            name="transformation"
-            value={formData.transformation}
-            onChange={handleInputChange}
-          />
+          
+          {
+            formFields.map((field) => (
+              <Input
+                key={field.name}
+                label={field.label}
+                name={field.name}
+                value={
+                  formData[
+                    field.name as keyof GeneratorFormData
+                  ]
+                }
+                onChange={handleInputChange}
+              />
+            ))
+          }
         </div>
 
         <div className="generator__preview">
