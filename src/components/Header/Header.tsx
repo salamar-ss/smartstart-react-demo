@@ -1,26 +1,30 @@
+import { NavLink } from "react-router-dom";
+
 function Header() {
+  function getLinkClass({ isActive }: { isActive: boolean }) {
+    return isActive ? "header__link header__link--active" : "header__link";
+  }
+
   return (
     <header className="header">
-      <div className="header__logo">
-        SmartStart
-      </div>
+      <div className="header__logo">SmartStart</div>
 
       <nav className="header__nav">
-        <a className="header__link" href="#">
+        <NavLink className={getLinkClass} to="/">
           Home
-        </a>
+        </NavLink>
 
-        <a className="header__link" href="#">
+        <NavLink className={getLinkClass} to="/generator">
           Generator
-        </a>
+        </NavLink>
 
-        <a className="header__link" href="#">
+        <NavLink className={getLinkClass} to="/templates">
           Templates
-        </a>
+        </NavLink>
 
-        <a className="header__link" href="#">
+        <NavLink className={getLinkClass} to="/preview">
           Preview
-        </a>
+        </NavLink>
       </nav>
     </header>
   );

@@ -37,6 +37,25 @@ body {
     display: flex;
     gap: 28px;
   }
+
+  &__link {
+    font-size: 15px;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &--active {
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+  }
+}
+
+.layout {
+  min-height: 100vh;
 }
 
 .hero {
