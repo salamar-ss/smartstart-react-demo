@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
+import TemplateCard from "../../components/TemplateCard/TemplateCard";
 import Textarea from "../../components/Textarea/Textarea";
 
 import { formFields } from "../../data/formFields";
 import { templateOptions } from "../../data/templateOptions";
+import { useTemplates } from "../../hooks/useTemplates";
 
 import type { FormFieldEvent } from "../../types/form.types";
 
@@ -42,6 +44,20 @@ function Generator() {
   });
 
   const [isSaved, setIsSaved] = useState(false);
+  const [templateSearch, setTemplateSearch] = useState("");
+
+  const { templates, isLoadingTemplates, templatesError } = useTemplates();
+
+  const filteredTemplates = useMemo(() => {
+    const searchValue = templateSearch.toLowerCase();
+
+    return templates.filter((template) => {
+      return (
+        template.title.toLowerCase().includes(searchValue) ||
+        template.body.toLowerCase().includes(searchValue)
+      );
+    });
+  }, [templates, templateSearch]);
 
   function handleFieldChange(event: FormFieldEvent) {
     const { name, value } = event.target;
@@ -117,9 +133,7 @@ function Generator() {
 
           <span className="generator__eyebrow">AI Landing Preview</span>
 
-          <p className="generator__template">
-            Template: {formData.templateType}
-          </p>
+          <p className="generator__template">Template: {formData.templateType}</p>
 
           <h1 className="generator__title">
             {formData.businessName || "Your Business Name"}
@@ -142,6 +156,41 @@ function Generator() {
             {formData.guarantee || "Your guarantee appears here"}
           </div>
         </div>
+      </div>
+
+      <div className="generator__templates">
+        <h3 className="generator__templates-title">Template Gallery</h3>
+
+        <Input
+          label="Search Templates"
+          name="templateSearch"
+          value={templateSearch}
+          onChange={(event) => {
+            setTemplateSearch(event.target.value);
+          }}
+        />
+
+        {isLoadingTemplates && (
+          <p className="generator__templates-message">Loading templates...</p>
+        )}
+
+        {templatesError && (
+          <p className="generator__templates-message">{templatesError}</p>
+        )}
+
+        {!isLoadingTemplates && !templatesError && (
+          <>
+            {filteredTemplates.length === 0 && (
+              <p className="generator__templates-message">No templates found.</p>
+            )}
+
+            <div className="generator__templates-grid">
+              {filteredTemplates.map((template) => (
+                <TemplateCard key={template.id} template={template} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
