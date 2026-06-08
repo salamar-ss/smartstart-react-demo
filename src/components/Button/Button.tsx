@@ -1,16 +1,12 @@
 type ButtonProps = {
   text: string;
   variant?: "primary" | "secondary";
+  onClick?: () => void;
 };
 
-function Button({
-  text,
-  variant = "primary",
-}: ButtonProps) {
+function Button({ text, variant = "primary", onClick }: ButtonProps) {
   return (
-    <button
-      className={`button button--${variant}`}
-    >
+    <button className={`button button--${variant}`} onClick={onClick}>
       {text}
     </button>
   );

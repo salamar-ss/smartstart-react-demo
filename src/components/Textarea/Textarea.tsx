@@ -1,6 +1,6 @@
 import type { FormFieldEvent } from "../../types/form.types";
 
-type InputProps = {
+type TextareaProps = {
   label: string;
   name: string;
   value: string;
@@ -9,29 +9,29 @@ type InputProps = {
   ) => void;
 };
 
-function Input({
+function Textarea({
   label,
   name,
   value,
   onChange,
-}: InputProps) {
+}: TextareaProps) {
   return (
-    <div className="input-field">
+    <div className="textarea-field">
 
-      <label className="input-field__label">
+      <label className="textarea-field__label">
         {label}
       </label>
 
-      <input
-        className="input-field__input"
-        type="text"
+      <textarea
+        className="textarea-field__textarea"
         name={name}
         value={value}
         onChange={onChange}
+        rows={6}
       />
 
     </div>
   );
 }
 
-export default Input;
+export default Textarea;

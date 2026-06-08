@@ -120,6 +120,14 @@ body {
     color: white;
     font-weight: 700;
   }
+
+  &__reset {
+    margin-top: 24px;
+    padding: 16px 24px;
+    border: 1px solid #161616;
+    background: transparent;
+    cursor: pointer;
+  }
 }
 
 .input-field {
@@ -137,5 +145,42 @@ body {
     border: 1px solid #161616;
     background: white;
     font-size: 16px;
+  }
+}
+
+.select-field {
+  margin-bottom: 24px;
+
+  &__label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  &__select {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #161616;
+    background: white;
+    font-size: 16px;
+  }
+}
+
+.textarea-field {
+  margin-bottom: 24px;
+
+  &__label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  &__textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #161616;
+    resize: vertical;
+    font-size: 16px;
+    min-height: 140px;
   }
 }
