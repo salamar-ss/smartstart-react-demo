@@ -11,3 +11,15 @@ export async function getTemplates(): Promise<Template[]> {
 
   return data;
 }
+
+export async function getTemplateById(id: string): Promise<Template> {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+
+  if (!response.ok) {
+    throw new Error("Template not found");
+  }
+
+  const data: Template = await response.json();
+
+  return data;
+}
