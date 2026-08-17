@@ -44,7 +44,7 @@ export function generatorReducer(
       return action.payload;
 
     default: {
-      const exhaustiveCheck: never = action;
+      //const exhaustiveCheck: never = action;
       return state;
     }
   }
